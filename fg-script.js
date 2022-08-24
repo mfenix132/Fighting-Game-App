@@ -9,20 +9,35 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 // ------- Sprite properties -------------------------------------------------------------
 
-const gravity = 0.2;
+const gravity = 0.7;
 
 class Sprite {
-  constructor({ position, velocity }) {
+  constructor({ position, velocity, color = 'red'}) {
     this.position = position;
     this.velocity = velocity;
     this.height = 150;
+    this.lastKey
+    this.attackBox = {
+      position: this.position,
+      width: 100, 
+      height: 50
+    } 
+    this.color = color
   }
 
+
+  // -----------------------------------------DRAW--------------------------------------!
   draw() {
-    c.fillStyle = "red";
+    c.fillStyle = this.color;
     c.fillRect(this.position.x, this.position.y, 50, this.height);
+
+    // attack box
+    c.fillStyle = "green";
+    c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
   }
 
+
+  // -------------------------------------------UPDATE --------------------------------!
   update() {
     this.draw();
     this.position.x += this.velocity.x;
@@ -49,13 +64,14 @@ const player = new Sprite({
 
 const enemy = new Sprite({
   position: {
-    x: 974,
+    x: 950,
     y: 100,
   },
   velocity: {
     x: 0,
     y: 0,
   },
+  color: 'blue'
 });
 
 // ------- Animation properties -------------------------------------------------------------
@@ -83,16 +99,26 @@ function animate() {
 
   player.velocity.x = 0;
 
+  //-------------------------------------PLAYER X AXIS MOVEMENT-----------------------------------
+
   if (keys.ArrowLeft.pressed && lastKey === "ArrowLeft") {
-    player.velocity.x = -1;
+    player.velocity.x = -5;
   } else if (keys.ArrowRight.pressed && lastKey === "ArrowRight") {
-    player.velocity.x = 1;
+    player.velocity.x = 5;
+  }
+
+  //-------------------------------------ENEMY X AXIS MOVEMENT-------------------------------------
+
+  if (keys.ArrowLeft.pressed && lastKey === "a") {
+    enemy.velocity.x = -5;
+  } else if (keys.ArrowRight.pressed && lastKey === "d") {
+    enemy.velocity.x = 5;
   }
 }
 
 animate();
 
-// ------- KEY DOWN properties -------------------------------------------------------------
+// ------- KEY DOWN properties Player -------------------------------------------------------------
 
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
@@ -105,27 +131,29 @@ window.addEventListener("keydown", (event) => {
       lastKey = "ArrowRight";                         // /_   |
       break;                                          //  |   |
     case "ArrowUp":                                   //  |   |
-      player.velocity.y = -10;                       //   |   |
+      player.velocity.y = -20;                       //   |   |
       break;                                         //   |___|
 
-    // enemy movement -----------------------------------------------------------------------
+
+
+    // ----- KEY DOWN properties ENEMY -----------------------------------------------------------------------
     case "d":
       keys.d.pressed = true;
-      lastKey = "d";
+      enemy.lastKey = "d";
       break;
     case "a":
       keys.a.pressed = true;
-      lastKey = "a";
+      enemy.lastKey = "a";
       break;
     case "w":
-      player.velocity.y = -10;
+      enemy.player.velocity.y = -20;
       break;
   }
   console.log(event.key);
 });
 
 // ------- KEY UP properties -------------------------------------------------------------
-
+      // player keys:
 window.addEventListener("keyup", (event) => {
   switch (event.key) {
     case "ArrowLeft":
@@ -136,6 +164,17 @@ window.addEventListener("keyup", (event) => {
       break;
     case "ArrowUp":
       keys.ArrowUp.pressed = false;
+      break;
+
+      // enemy keys:
+    case "d":
+      keys.d.pressed = false;
+      break;
+    case "a":
+      keys.a.pressed = false;
+      break;
+    case "w":
+      keys.w.pressed = false;
       break;
   }
   console.log(event.key);
