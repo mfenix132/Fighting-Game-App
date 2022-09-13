@@ -39,7 +39,7 @@ class Sprite {
 
     // --------------------------------------ATTACK BOX --------------------------------
     
-    //if (this.isAttacking) {
+    if (this.isAttacking) {
     c.fillStyle = "green";
     c.fillRect(
       this.attackBox.position.x, 
@@ -47,7 +47,7 @@ class Sprite {
       this.attackBox.width, 
       this.attackBox.height
       )
-    //}
+    }
   }
 
 

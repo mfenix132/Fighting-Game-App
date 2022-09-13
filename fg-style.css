@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+.canvas-container {
+    position: relative;
+    display: inline-block;
+}
+
+.health-bars {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.player-health {
+    background-color: yellow;
+    height: 30px;
+    width: 100%;
+}
+
+.timer {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.enemy-health {
+    background-color: yellow;
+    height: 30px;
+    width: 100%;
+}
+
