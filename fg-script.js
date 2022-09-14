@@ -29,6 +29,7 @@ class Sprite {
     } 
     this.color = color
     this.isAttacking
+    this.health = 100
   }
 
 
@@ -132,7 +133,8 @@ const keys = {
   
 };
 
-// let lastKey;
+// -------------------------------------------FUNCTIONS --------------------------------------------
+
 
 function rectangularCollision({rectangle1, rectangle2}) {
   return (
@@ -141,6 +143,17 @@ function rectangularCollision({rectangle1, rectangle2}) {
     rectangle1.attackBox.position.y + rectangle1.attackBox.height >= rectangle2.position.y &&
     rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height)
 }
+
+let timer = 10;
+function decreaseTimer() {
+  setTimeout(decreaseTimer, 1000)
+  if (timer > 0) {
+      timer--
+      document.querySelector('#timer').innerHTML = timer
+}
+}
+
+decreaseTimer()
 
 function animate() {
   window.requestAnimationFrame(animate);
@@ -178,7 +191,8 @@ function animate() {
     player.isAttacking
     ) {
     player.isAttacking = false
-    console.log("Player Go!")
+    enemy.health -= 20;
+    document.querySelector('#enemy-health').style.width = enemy.health + "%"
   }
 
  //------------------------------------- Detect ENEMY COLLISION ----------------------------------------
@@ -191,7 +205,8 @@ function animate() {
   enemy.isAttacking
   ) {
   enemy.isAttacking = false
-  console.log("Enemy Go!")
+  player.health -= 20;
+  document.querySelector('#player-health').style.width = player.health + "%"
 }
 
 

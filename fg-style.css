@@ -15,10 +15,28 @@
     padding: 20px;
 }
 
+
+.pbar-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    height: 30px;
+    width: 100%;
+}
+
 .player-health {
     background-color: yellow;
     height: 30px;
     width: 100%;
+}
+
+.pbar {
+    position: absolute;
+    background: blue;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;    
 }
 
 .timer {
@@ -26,11 +44,31 @@
     width: 100px;
     height: 100px;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.ebar-container {
+    position: relative;
+    height: 30px;
+    width: 100%;
 }
 
 .enemy-health {
     background-color: yellow;
     height: 30px;
     width: 100%;
+}
+
+.ebar {
+    position: absolute;
+    background: blue;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
