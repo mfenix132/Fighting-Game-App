@@ -144,12 +144,23 @@ function rectangularCollision({rectangle1, rectangle2}) {
     rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height)
 }
 
-let timer = 10;
+let timer = 99;
 function decreaseTimer() {
   setTimeout(decreaseTimer, 1000)
   if (timer > 0) {
       timer--
       document.querySelector('#timer').innerHTML = timer
+}
+
+if (timer === 0) {
+  document.querySelector('.result').style.display = "flex"
+if (player.health === enemy.health) {
+  document.querySelector('.result').innerHTML = "TIE"
+} else if (player.health > enemy.health) {
+  document.querySelector('.result').innerHTML = "YOU WIN!!!"
+} else if (player.health < enemy.health) {
+  document.querySelector('.result').innerHTML = "YOU LOSE!!! :*(((("
+}
 }
 }
 
@@ -209,8 +220,10 @@ function animate() {
   document.querySelector('#player-health').style.width = player.health + "%"
 }
 
-
-
+// ------------------------------------------- END GAME based on ENERGY BAR ---------------------------------
+if (enemy.health <= 0 || player.health <= 0) {
+  
+}
 
 }
 
