@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title></title>
 
-        <link rel="stylesheet" href="fg-style.css">        
-    </head>
-    <body>
-        <div class="canvas-container">
-            <div class="health-bars">
-                <!-- player health bar -------------------------------------------------------->
-                <div class="pbar-container">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title></title>
+
+    <link rel="stylesheet" href="fg-style.css">
+</head>
+
+<body>
+    <div class="canvas-container">
+        <div class="health-bars">
+            <!-- player health bar -------------------------------------------------------->
+            <div class="pbar-container">
                 <div class="player-health"></div>
                 <div id="player-health" class="pbar"></div>
-                </div>
-
-        <!-- TIMER ------------------------------------------------------------------- -->
-                <div id="timer" class="timer">10</div>
-
-                 <!-- enemy health bar -------------------------------------------------------->
-                <div class="ebar-container">
-                <div class="enemy-health"></div>
-                <div id="enemy-health" class="ebar"></div>
-                </div>
             </div>
 
-            <div class="result">TIE</div>
-            <canvas>
-            
-            </canvas>
+            <!-- TIMER ------------------------------------------------------------------- -->
+            <div id="timer" class="timer">10</div>
+
+            <!-- enemy health bar -------------------------------------------------------->
+            <div class="ebar-container">
+                <div class="enemy-health"></div>
+                <div id="enemy-health" class="ebar"></div>
+            </div>
         </div>
-        <script src="./js/utils.js" defer></script>
-        <script src="./js/classes.js" defer></script>
-        <script src="fg-script.js" defer></script>
-    </body>
+
+        <div class="result">TIE</div>
+        <canvas>
+
+        </canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/utils.js" defer></script>
+    <script src="./js/classes.js" defer></script>
+    <script src="fg-script.js" defer></script>
+</body>
+
 </html>
